@@ -1,0 +1,49 @@
+body{
+    padding: 50px;
+}
+.card{
+    width: 250px;
+    height: 200px;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.delete-checkbox{
+    position:absolute;
+    left: 10px;
+    top: 10px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+#product-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+.btn{
+    border: 1px solid black;
+}
+.input-row{
+    display: flex;
+    align-items: center;
+    width: 500px;
+    margin: 10px;
+}
+.column-text{
+    flex: 30%;
+}
+.column-input{
+    flex: 70%;
+}
+#product_form{
+    padding: 30px;
+}
+.option{
+    display: none;
+}
