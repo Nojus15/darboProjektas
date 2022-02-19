@@ -1,5 +1,5 @@
 <?php
-require './classes.php';
+include 'includes/autoClassLoader.inc.php';
 
 $valid = array(
     'DVD' => ['size'],
@@ -11,8 +11,8 @@ $sku = "";
 $name = "";
 $price = "";
 
-$getSKU = new product;
-$existingSKU = $getSKU->getSKU();
+$getSKU = new ProductView;
+$existingSKU = $getSKU->showSKU();
 
 $newSKU = true;
 $correctData = true;
@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($sku) || empty($name) || empty($price) || empty($productType)) $filledData = false;
 
     if ($correctData && $filledData && $newSKU) {
-        $insert = new product();
-        $insert->setProduct($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
+        $insert = new ProductContr();
+        $insert->addNewProduct($sku, $name, $price, $productType, $size, $weight, $height, $width, $length);
         header("Location: ./index.php");
     }
 }
@@ -138,8 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             var selectedID;
             $('select#productType').on("change", function() {
                 $("#" + $(this).val()).show().siblings(".option").hide();
-                selectedID = $("#" + $(this).val());
-                selectedID = selectedID['selector'].replace('#', '');
             });
         </script>
     </form>

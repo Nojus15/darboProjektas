@@ -1,5 +1,5 @@
 <?php
-require './classes.php';
+include 'includes/autoClassLoader.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ require './classes.php';
 	</nav>
 	<form id="product-list" method="post">
 		<?php
-		$products = new showProducts();
+		$products = new ProductView();
 		$products->showAllProducts();
 		?>
 	</form>
@@ -47,10 +47,9 @@ require './classes.php';
 				selected: JSON.stringify(selected)
 			});
 			$.post(
-				'delete.php', // location of your php script
-				{
+				'includes/delete.inc.php', {
 					selected: selected,
-				}, // any data you want to send to the script
+				},
 			)
 		})
 	</script>
@@ -59,3 +58,4 @@ require './classes.php';
 </body>
 
 </html>
+<!-- C:\xampp\htdocs\product\index.php -->
