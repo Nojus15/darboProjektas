@@ -1,14 +1,18 @@
 <?php
 
+namespace MyApp\database;
+
+use \PDO;
+
 class dbh
 {
     private static $connection = null;
 
     private static $host = 'sql11.freemysqlhosting.net';
     private static $port = '3306';
-    private static $dbname = 'sql11472264';
-    private static $user = 'sql11472264';
-    private static $psw = 'hddkpS766W';
+    private static $dbname = 'sql11477470';
+    private static $user = 'sql11477470';
+    private static $psw = 'KQydnb4Si7';
 
     public static function getPDO()
     {

@@ -1,8 +1,14 @@
 <?php
 
+namespace MyApp\models;
+
+use MyApp\database\dbh;
+use \PDO;
+
+
 abstract class Product
 {
-    protected function getProducts()
+    protected function getProductsData()
     {
         $statement = dbh::getPDO()->prepare("SELECT * FROM product_list");
         $statement->execute();
@@ -14,9 +20,8 @@ abstract class Product
     {
         $statement = dbh::getPDO()->prepare("SELECT sku FROM product_list");
         $statement->execute();
-        $sku = $statement->fetchAll(PDO::FETCH_COLUMN);
-
-        return $sku;
+        $result = $statement->fetchAll(PDO::FETCH_COLUMN);
+        return $result;
     }
     protected function setProduct($sku, $name, $price, $productType, $size, $weight, $height, $width, $length)
     {
@@ -34,7 +39,8 @@ abstract class Product
     }
     protected function delProduct($id)
     {
-        $delete = dbh::getPDO()->prepare("DELETE FROM product_list WHERE formID = $id");
+        $delete = dbh::getPDO()->prepare("DELETE FROM product_list WHERE formID = :id");
+        $delete->bindValue(':id', $id);
         $delete->execute();
     }
 }
